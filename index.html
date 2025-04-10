@@ -6,19 +6,59 @@
   <title>YouTube TV 2018</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .topbar {
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .loading {
+      display: none;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #202020;
+      color: white;
+      height: 100vh;
+      float: left;
+      padding-top: 20px;
+    }
+
+    .sidebar .logo {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .sidebar ul li:hover {
+      background-color: #383838;
+    }
+
+    .main-area {
+      margin-left: 200px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .search-bar {
+      background-color: #181818;
+      padding: 10px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      background-color: #181818;
-      color: white;
     }
-    .topbar .search-box {
-      flex: 1;
-      margin-left: 20px;
-    }
-    .topbar input {
+
+    .search-bar input {
       width: 100%;
       padding: 8px 12px;
       border-radius: 20px;
@@ -27,20 +67,75 @@
       color: white;
       font-size: 14px;
     }
-    .topbar input:focus {
+
+    .search-bar input:focus {
       outline: none;
       background-color: #404040;
+    }
+
+    .content {
+      flex: 1;
+      background: black;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
   <div class="loading">Đang tải...</div>
 
-  <div class="topbar">
+  <div class="sidebar">
     <div class="logo">YouTube TV</div>
-    <div class="search-box">
+    <ul>
+      <li onclick="loadPage('home')">Trang chủ</li>
+      <li onclick="loadPage('trending')">Thịnh hành</li>
+      <li onclick="loadPage('subs')">Kênh đăng ký</li>
+      <li onclick="loadPage('library')">Thư viện</li>
+    </ul>
+  </div>
+
+  <div class="main-area">
+    <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Tìm kiếm video..." onkeypress="handleSearch(event)">
+    </div>
+    <div class="content">
+      <iframe id="mainFrame" 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+        allow="autoplay; encrypted-media" 
+        allowfullscreen 
+        title="YouTube video player">
+      </iframe>
     </div>
   </div>
 
-  <div style="display: flex; height: calc(100vh - 50px); overflow: hidden
+  <script>
+    const frame = document.getElementById('mainFrame');
+    const randomVideos = [
+      "AZd-AjJ5A-M", "ktvTqknDobU", "9bZkp7q19f0", "RgKAFK5djSk", "60ItHLz5WEA"
+    ];
+
+    function loadPage(page) {
+      if (page === 'trending') {
+        const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
+        frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
+      } else {
+        frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE";
+      }
+    }
+
+    function handleSearch(event) {
+      if (event.key === "Enter") {
+        const query = document.getElementById("searchInput").value.trim();
+        if (query) {
+          const encodedQuery = encodeURIComponent(query);
+          frame.src = `https://www.youtube.com/embed?listType=search&list=${encodedQuery}&autoplay=1`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
