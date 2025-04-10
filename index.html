@@ -19,32 +19,37 @@
   </div>
   <div class="content">
     <iframe id="mainFrame" width="560" height="315" 
-  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
-  title="YouTube video player" 
-  frameborder="0" 
-  allow="autoplay; encrypted-media" 
-  allowfullscreen>
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen>
     </iframe>
   </div>
 
   <script>
-    const frame = document.getElementById('mainFrame');
-    const randomVideos = [
-      "AZd-AjJ5A-M", // Anh Lac Vao Trong Mo
-      "ktvTqknDobU", // Radioactive
-      "9bZkp7q19f0", // Gangnam Style
-      "RgKAFK5djSk", // Wiz Khalifa - Fast & Furious
-      "60ItHLz5WEA"  // Alan Walker - Faded
-    ];
+    document.addEventListener("DOMContentLoaded", function () {
+      const frame = document.getElementById('mainFrame');
+      const randomVideos = [
+        "AZd-AjJ5A-M", // Anh Lạc Vào Trong Mơ
+        "ktvTqknDobU", // Radioactive
+        "9bZkp7q19f0", // Gangnam Style
+        "RgKAFK5djSk", // See You Again
+        "60ItHLz5WEA"  // Alan Walker - Faded
+      ];
 
-    function loadPage(page) {
-      if (page === 'trending') {
-        const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
-        frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
-      } else {
-        frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE";
+      function loadPage(page) {
+        if (page === 'trending') {
+          const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
+          frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
+        } else {
+          frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE";
+        }
       }
-    }
+
+      // Expose function to global so HTML can access it
+      window.loadPage = loadPage;
+    });
   </script>
 </body>
 </html>
