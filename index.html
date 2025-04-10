@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="loading">Đang tải...</div>
+
   <div class="sidebar">
     <div class="logo">YouTube</div>
     <ul>
@@ -17,17 +18,19 @@
       <li onclick="loadPage('library')">Thư viện</li>
     </ul>
   </div>
+
   <div class="content">
     <div class="topbar">
       <input type="text" placeholder="Tìm kiếm video..." />
       <button>Tìm</button>
     </div>
+
     <div class="video-container">
-      <iframe id="mainFrame" 
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
+      <iframe id="mainFrame"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
         allowfullscreen>
       </iframe>
     </div>
