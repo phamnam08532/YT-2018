@@ -1,58 +1,92 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YouTube TV 2018</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài Đặt</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Đảm bảo rằng tệp này tồn tại và được tham chiếu đúng -->
 </head>
 <body>
-  <div class="loading">Đang tải...</div>
-  
-  <div class="sidebar">
-    <div class="logo">YouTube</div>
-    <ul>
-      <li onclick="loadPage('home')">Trang chủ</li>
-      <li onclick="loadPage('trending')">Thịnh hành</li>
-      <li onclick="loadPage('subs')">Kênh đăng ký</li>
-      <li onclick="loadPage('library')">Thư viện</li>
-    </ul>
-  </div>
+    <div class="container">
+        <header class="center-align">
+            <h1>Cài Đặt</h1>
+        </header>
 
-  <div class="main">
-    <div class="topbar">
-      <input type="text" placeholder="Tìm kiếm video..." />
-      <button>Tìm</button>
+        <!-- Menu Tabs -->
+        <nav>
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#network">Mạng</a></li>
+                <li class="tab col s3"><a href="#display">Màn Hình</a></li>
+                <li class="tab col s3"><a href="#sound">Âm Thanh</a></li>
+                <li class="tab col s3"><a href="#storage">Dung Lượng</a></li>
+                <li class="tab col s3"><a href="#security">Bảo Mật</a></li>
+                <li class="tab col s3"><a href="#account">Tài Khoản</a></li>
+            </ul>
+        </nav>
+
+        <!-- Nội dung từng tab -->
+        <div id="network" class="col s12">
+            <h5>Wi-Fi</h5>
+            <div class="switch">
+                <label>
+                    Off
+                    <input type="checkbox" id="wifi">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+            <h5>Dữ Liệu Di Động</h5>
+            <div class="switch">
+                <label>
+                    Off
+                    <input type="checkbox" id="data">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+        </div>
+
+        <div id="display" class="col s12">
+            <h5>Độ Sáng</h5>
+            <input type="range" id="brightness" min="0" max="100" value="50">
+        </div>
+
+        <div id="sound" class="col s12">
+            <h5>Âm Lượng</h5>
+            <input type="range" id="volume" min="0" max="100" value="70">
+        </div>
+
+        <div id="storage" class="col s12">
+            <h5>Dung Lượng Bộ Nhớ</h5>
+            <p>Đã sử dụng: 10 GB / 64 GB</p>
+        </div>
+
+        <div id="security" class="col s12">
+            <h5>Mã Pin</h5>
+            <div class="switch">
+                <label>
+                    Off
+                    <input type="checkbox" id="pin">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+        </div>
+
+        <div id="account" class="col s12">
+            <h5>Tài Khoản Google</h5>
+            <button class="btn">Đăng Nhập</button>
+        </div>
+
+        <footer class="center-align">
+            <button class="btn waves-effect waves-light">Lưu Cài Đặt</button>
+        </footer>
     </div>
-    <div class="video-container">
-      <iframe id="mainFrame"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
-        title="YouTube video player"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
 
-  <script>
-    const frame = document.getElementById('mainFrame');
-    const randomVideos = [
-      "AZd-AjJ5A-M",
-      "ktvTqknDobU",
-      "9bZkp7q19f0",
-      "RgKAFK5djSk",
-      "60ItHLz5WEA"
-    ];
-
-    function loadPage(page) {
-      if (page === 'trending') {
-        const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
-        frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1&mute=1`;
-      } else {
-        frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&mute=1";
-      }
-    }
-  </script>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>
+  </html>
