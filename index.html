@@ -9,7 +9,7 @@
 <body>
   <div class="loading">Đang tải...</div>
   <div class="sidebar">
-    <div class="logo">YouTube TV</div>
+    <div class="logo">YouTube</div>
     <ul>
       <li onclick="loadPage('home')">Trang chủ</li>
       <li onclick="loadPage('trending')">Thịnh hành</li>
@@ -22,13 +22,15 @@
       <input type="text" placeholder="Tìm kiếm video..." />
       <button>Tìm</button>
     </div>
-    <iframe id="mainFrame" width="560" height="315" 
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="autoplay; encrypted-media" 
-      allowfullscreen>
-    </iframe>
+    <div class="video-container">
+      <iframe id="mainFrame" 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
 
   <script>
