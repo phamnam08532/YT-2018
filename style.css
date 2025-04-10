@@ -5,18 +5,9 @@
   font-family: Arial, sans-serif;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
 body {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: 
-    "sidebar topbar"
-    "sidebar main";
+  display: flex;
+  height: 100vh;
   background-color: #111;
   color: white;
   overflow: hidden;
@@ -41,14 +32,13 @@ body {
 }
 
 .sidebar {
-  grid-area: sidebar;
+  width: 240px;
   background-color: #202020;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.4);
-  height: 100vh;
 }
 
 .logo {
@@ -76,13 +66,18 @@ body {
   border-radius: 4px;
 }
 
-.topbar {
-  grid-area: topbar;
+.main {
+  flex: 1;
   display: flex;
-  padding: 12px;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  padding: 10px;
   background-color: #111;
-  gap: 8px;
-  align-items: center;
+  display: flex;
+  gap: 10px;
 }
 
 .topbar input {
@@ -90,27 +85,37 @@ body {
   padding: 10px;
   font-size: 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .topbar button {
   padding: 10px 16px;
-  font-size: 16px;
   background-color: #e62117;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .video-container {
-  grid-area: main;
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding: 20px;
 }
 
-.video-container iframe {
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrapper iframe {
+  position: absolute;
   width: 100%;
   height: 100%;
   border: none;
-    }
+  }
