@@ -56,18 +56,4 @@ body {
 }
 
 .sidebar li {
-  padding: 12px 16px;
-  background-color: #333;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-size: 18px;
-}
-
-.sidebar li:hover {
-  background-color: #e62117;
-}
-
-.content {
-  flex-grow: 1;
-  display: flex;
+  padding: 12px
