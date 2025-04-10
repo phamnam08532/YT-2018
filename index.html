@@ -5,59 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YouTube TV 2018</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #181818;
+      color: white;
+    }
+    .topbar .search-box {
+      flex: 1;
+      margin-left: 20px;
+    }
+    .topbar input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: none;
+      background-color: #303030;
+      color: white;
+      font-size: 14px;
+    }
+    .topbar input:focus {
+      outline: none;
+      background-color: #404040;
+    }
+  </style>
 </head>
 <body>
   <div class="loading">Đang tải...</div>
-  <div class="sidebar">
+
+  <div class="topbar">
     <div class="logo">YouTube TV</div>
-    <ul>
-      <li onclick="loadPage('home')">Trang chủ</li>
-      <li onclick="loadPage('trending')">Thịnh hành</li>
-      <li onclick="loadPage('subs')">Kênh đăng ký</li>
-      <li onclick="loadPage('library')">Thư viện</li>
-    </ul>
-  </div>
-  <div class="content">
-    <div class="search-bar">
+    <div class="search-box">
       <input type="text" id="searchInput" placeholder="Tìm kiếm video..." onkeypress="handleSearch(event)">
     </div>
-    <iframe id="mainFrame" width="560" height="315" 
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="autoplay; encrypted-media" 
-      allowfullscreen>
-    </iframe>
   </div>
 
-  <script>
-    const frame = document.getElementById('mainFrame');
-    const randomVideos = [
-      "AZd-AjJ5A-M", // Anh Lac Vao Trong Mo
-      "ktvTqknDobU", // Radioactive
-      "9bZkp7q19f0", // Gangnam Style
-      "RgKAFK5djSk", // Wiz Khalifa - Fast & Furious
-      "60ItHLz5WEA"  // Alan Walker - Faded
-    ];
-
-    function loadPage(page) {
-      if (page === 'trending') {
-        const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
-        frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
-      } else {
-        frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE";
-      }
-    }
-
-    function handleSearch(event) {
-      if (event.key === "Enter") {
-        const query = document.getElementById("searchInput").value.trim();
-        if (query) {
-          const encodedQuery = encodeURIComponent(query);
-          frame.src = `https://www.youtube.com/embed?listType=search&list=${encodedQuery}&autoplay=1`;
-        }
-      }
-    }
-  </script>
-</body>
-</html>
+  <div style="display: flex; height: calc(100vh - 50px); overflow: hidden
