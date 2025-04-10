@@ -18,16 +18,17 @@
     </ul>
   </div>
   <div class="content">
-    <iframe id="mainFrame" src="https://youtube.com/tv" allowfullscreen></iframe>
+    <iframe id="mainFrame" src="https://www.youtube.com/embed/M7lc1UVf-VE" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
+
   <script>
     const frame = document.getElementById('mainFrame');
     const randomVideos = [
-      "dQw4w9WgXcQ", // Rick Roll haha
-      "M7lc1UVf-VE", // YT API Demo
       "3JZ_D3ELwOQ", // See You Again
       "ktvTqknDobU", // Radioactive
-      "9bZkp7q19f0"  // Gangnam Style
+      "9bZkp7q19f0", // Gangnam Style
+      "RgKAFK5djSk", // Wiz Khalifa - Fast & Furious
+      "60ItHLz5WEA"  // Alan Walker - Faded
     ];
 
     function loadPage(page) {
@@ -35,7 +36,7 @@
         const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
         frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
       } else {
-        frame.src = "https://youtube.com/tv";
+        frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE";
       }
     }
   </script>
