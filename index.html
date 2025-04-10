@@ -18,6 +18,9 @@
     </ul>
   </div>
   <div class="content">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm video..." onkeypress="handleSearch(event)">
+    </div>
     <iframe id="mainFrame" width="560" height="315" 
       src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
       title="YouTube video player" 
@@ -28,28 +31,33 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const frame = document.getElementById('mainFrame');
-      const randomVideos = [
-        "AZd-AjJ5A-M", // Anh Lạc Vào Trong Mơ
-        "ktvTqknDobU", // Radioactive
-        "9bZkp7q19f0", // Gangnam Style
-        "RgKAFK5djSk", // See You Again
-        "60ItHLz5WEA"  // Alan Walker - Faded
-      ];
+    const frame = document.getElementById('mainFrame');
+    const randomVideos = [
+      "AZd-AjJ5A-M", // Anh Lac Vao Trong Mo
+      "ktvTqknDobU", // Radioactive
+      "9bZkp7q19f0", // Gangnam Style
+      "RgKAFK5djSk", // Wiz Khalifa - Fast & Furious
+      "60ItHLz5WEA"  // Alan Walker - Faded
+    ];
 
-      function loadPage(page) {
-        if (page === 'trending') {
-          const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
-          frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
-        } else {
-          frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE";
+    function loadPage(page) {
+      if (page === 'trending') {
+        const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
+        frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
+      } else {
+        frame.src = "https://www.youtube.com/embed/M7lc1UVf-VE";
+      }
+    }
+
+    function handleSearch(event) {
+      if (event.key === "Enter") {
+        const query = document.getElementById("searchInput").value.trim();
+        if (query) {
+          const encodedQuery = encodeURIComponent(query);
+          frame.src = `https://www.youtube.com/embed?listType=search&list=${encodedQuery}&autoplay=1`;
         }
       }
-
-      // Expose function to global so HTML can access it
-      window.loadPage = loadPage;
-    });
+    }
   </script>
 </body>
 </html>
