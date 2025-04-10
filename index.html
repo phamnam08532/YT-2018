@@ -11,25 +11,33 @@
   <div class="sidebar">
     <div class="logo">YouTube TV</div>
     <ul>
-      <li onclick="loadVideo('dQw4w9WgXcQ')">Trang chủ</li>
-      <li onclick="loadVideo('kxopViU98Xo')">Thịnh hành</li>
-      <li onclick="loadVideo('3JZ_D3ELwOQ')">Kênh đăng ký</li>
-      <li onclick="loadVideo('tgbNymZ7vqY')">Thư viện</li>
+      <li onclick="loadPage('home')">Trang chủ</li>
+      <li onclick="loadPage('trending')">Thịnh hành</li>
+      <li onclick="loadPage('subs')">Kênh đăng ký</li>
+      <li onclick="loadPage('library')">Thư viện</li>
     </ul>
   </div>
   <div class="content">
-    <iframe id="ytframe" width="100%" height="100%" frameborder="0"
-      allow="autoplay; encrypted-media" allowfullscreen>
-    </iframe>
+    <iframe id="mainFrame" src="https://youtube.com/tv" allowfullscreen></iframe>
   </div>
   <script>
-    function loadVideo(videoId) {
-      const iframe = document.getElementById("ytframe");
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-    }
+    const frame = document.getElementById('mainFrame');
+    const randomVideos = [
+      "dQw4w9WgXcQ", // Rick Roll haha
+      "M7lc1UVf-VE", // YT API Demo
+      "3JZ_D3ELwOQ", // See You Again
+      "ktvTqknDobU", // Radioactive
+      "9bZkp7q19f0"  // Gangnam Style
+    ];
 
-    // Load mặc định Trang chủ khi mở trang
-    window.onload = () => loadVideo('dQw4w9WgXcQ');
+    function loadPage(page) {
+      if (page === 'trending') {
+        const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
+        frame.src = `https://www.youtube.com/embed/${randomId}?autoplay=1`;
+      } else {
+        frame.src = "https://youtube.com/tv";
+      }
+    }
   </script>
 </body>
 </html>
